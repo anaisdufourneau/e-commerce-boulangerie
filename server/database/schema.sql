@@ -35,11 +35,14 @@ name VARCHAR(100) NOT NULL
 
 CREATE TABLE produit (
 id INT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(100) NOT NULL,
+title VARCHAR(100) NOT NULL,
 prix DECIMAL (10,2),
+image_url VARCHAR(255) NOT NULL DEFAULT "croissant.jpg",
+description TEXT NOT NULL,
 categorie_id INT NOT NULL,
 FOREIGN KEY (categorie_id) REFERENCES Categorie(id) ON DELETE CASCADE
 );
+
 CREATE TABLE commande_produit (
   commande_id INT NOT NULL,
   produit_id INT NOT NULL,
