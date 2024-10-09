@@ -1,14 +1,14 @@
 const AbstractRepository = require("./AbstractRepository");
 
-class CommandeRepository extends AbstractRepository {
+class ProduitRepository extends AbstractRepository {
   constructor() {
-    super({ table: "commande" });
+    super({ table: "produit" });
   }
 
-  async create(commande) {
+  async create(produit) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (id, client_id, quantite) values (?, ?, ?)`,
-      [commande.id, commande.client_id, commande.quantite]
+      `insert into ${this.table} (id, name, prix, categorie_id) values (?, ?, ?, ?)`,
+      [produit.id, produit.name, produit.prix, produit.categorie_id]
     );
     return result.insertId;
   }
@@ -26,10 +26,10 @@ class CommandeRepository extends AbstractRepository {
     return rows;
   }
 
-  async update(commande) {
+  async update(produit) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} set client_id = ?, quantite = ?, WHERE id = ?`,
-      [commande.client_id, commande.quantite, commande.id]
+      `UPDATE ${this.table} set name = ?, prix = ?,  categorie_id = ?, WHERE id = ?`,
+      [produit.name, produit.prix, produit.categorie_id, produit.id]
     );
     return result.affectedRows;
   }
@@ -43,4 +43,4 @@ class CommandeRepository extends AbstractRepository {
   }
 }
 
-module.exports = CommandeRepository;
+module.exports = ProduitRepository;
