@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const adminActions = require("../controllers/clientActions");
+const adminActions = require("../controllers/adminActions");
 
 router.get("/profile", adminActions.read);
 

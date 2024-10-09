@@ -2,6 +2,7 @@
 const ItemRepository = require("./models/ItemRepository");
 const ClientRepository = require("./models/ClientRepository");
 const AdminRepository = require("./models/AdminRepository");
+const CommandeRepository = require("./models/CommandeRepository");
 // Create an empty object to hold data repositories for different tables
 const tables = {};
 
@@ -13,6 +14,7 @@ const tables = {};
 tables.item = new ItemRepository();
 tables.client = new ClientRepository();
 tables.admin = new AdminRepository();
+tables.commande = new CommandeRepository();
 /* ************************************************************************* */
 
 // Use a Proxy to customize error messages when trying to access a non-existing table

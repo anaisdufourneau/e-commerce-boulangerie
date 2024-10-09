@@ -2,18 +2,16 @@ const express = require("express");
 
 const router = express.Router();
 
-const userActions = require("../controllers/clientActions");
+const clientActions = require("../controllers/clientActions");
 
-router.get("/profile", userActions.read);
+router.get("/", clientActions.browse);
 
-router.get("/", userActions.browse);
+router.get("/:id", clientActions.read);
 
-router.get("/:id", userActions.read);
+router.post("/", clientActions.add);
 
-router.post("/", userActions.add);
+router.put("/:id", clientActions.edit);
 
-router.put("/:id", userActions.edit);
-
-router.delete("/:id", userActions.destroy);
+router.delete("/:id", clientActions.destroy);
 
 module.exports = router;
