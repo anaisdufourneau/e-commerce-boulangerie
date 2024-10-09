@@ -11,7 +11,9 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const categorie = await tables.categorie(Number(req.params.id));
+    const categorie = await tables.categorie.readWithProduit(
+      Number(req.params.id)
+    );
 
     console.info(categorie);
     if (categorie != null) {
