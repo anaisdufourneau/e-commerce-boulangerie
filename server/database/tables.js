@@ -4,6 +4,7 @@ const ClientRepository = require("./models/ClientRepository");
 const AdminRepository = require("./models/AdminRepository");
 const CommandeRepository = require("./models/CommandeRepository");
 const ProduitRepository = require("./models/ProduitRepository");
+const CategorieRepository = require("./models/CategorieRepository");
 // Create an empty object to hold data repositories for different tables
 const tables = {};
 
@@ -18,6 +19,7 @@ tables.client = new ClientRepository();
 tables.admin = new AdminRepository();
 tables.commande = new CommandeRepository();
 tables.produit = new ProduitRepository();
+tables.categorie = new CategorieRepository();
 
 /* ************************************************************************* */
 
