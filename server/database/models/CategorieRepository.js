@@ -42,7 +42,7 @@ class CategorieRepository extends AbstractRepository {
     rows.forEach((row) => {
       response.produits.push({
         id: row.produitId,
-        name: row.produitName,
+        title: row.produitTitle,
         image_url: row.produitImage_url,
       });
     });

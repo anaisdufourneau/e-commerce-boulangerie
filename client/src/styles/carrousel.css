@@ -1,0 +1,42 @@
+.carrousel {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carrousel__image-container {
+  width: 100%;
+}
+
+.carrousel__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carrousel__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 2;
+}
+
+.carrousel__button--left {
+  left: 10px;
+}
+
+.carrousel__button--right {
+  right: 10px;
+}
+
+.carrousel__button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

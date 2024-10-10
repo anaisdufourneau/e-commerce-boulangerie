@@ -6,17 +6,14 @@ import MenuBurger from "./MenuBurger";
 
 export default function Navbar() {
   return (
-    <>
-      <nav>
-        <section>
-          <Link to="/patisserie">Nos pâtisseries</Link>
-        </section>
-        <Link to="/">
-          <img src={Logo} alt="Miam" />
-        </Link>
-        <MenuBurger />
-      </nav>
-      <hr />
-    </>
+    <nav>
+      <section>
+        <Link to="/patisserie">Nos pâtisseries</Link>
+      </section>
+      <Link to="/">
+        <img src={Logo} alt="Miam" />
+      </Link>
+      <MenuBurger />
+    </nav>
   );
 }
