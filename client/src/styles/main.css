@@ -13,11 +13,48 @@
 
   /* font*/
 
-  --title-font: "Playfair";
+  --title-font: "Playfair + Display";
   --lorem-font: "Poppins";
 }
 
 * {
   margin: 0;
   box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+#root > main {
+  background: var(--primary-white, #fcfcfc);
+  min-height: 100%;
+  margin: 0;
+  background: var(--primary-white, #fcfcfc);
+  font-family: var(--title-font);
+}
+
+a,
+a:visited,
+a:link {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+input,
+input:focus {
+  border: 0;
+  outline: none;
 }
