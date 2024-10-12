@@ -11,40 +11,43 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const produit = await tables.produit.read(Number(req.params.id));
-    if (produit == null) {
-      res.sendStatus(404);
-    } else {
-      res.json(produit);
-    }
+    const produit = await tables.produit.read(req.params.id);
+    res.json(produit);
+  } catch (err) {
+    next(err);
+  }
+};
+const readRandom = async (req, res, next) => {
+  const { limit } = req.query;
+  try {
+    const produitRandom = await tables.produit.readRandom(limit || 1);
+    res.json(produitRandom);
   } catch (err) {
     next(err);
   }
 };
 
 const edit = async (req, res, next) => {
-  const produit = req.body;
-  console.info(req.body);
+  const produit = { ...req.body, id: req.params.id };
 
   try {
-    const affectedRows = await tables.produit.update(req.params.id, produit);
-
-    if (affectedRows === 0) {
-      res.sendStatus(404);
-    } else {
-      res.sendStatus(200);
-    }
+    await tables.produit.update(produit);
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
 };
 
 const add = async (req, res, next) => {
-  const produit = req.body;
-
   try {
-    const insertId = await tables.produit.create(produit);
-    res.status(201).json({ insertId });
+    const { title, description, filename } = req.body;
+
+    const produitId = await tables.produit.create({
+      image_url: filename,
+      title,
+      description,
+    });
+    res.status(200).json({ success: true, produitId });
   } catch (err) {
     next(err);
   }
@@ -67,6 +70,7 @@ const destroy = async (req, res, next) => {
 module.exports = {
   browse,
   read,
+  readRandom,
   edit,
   add,
   destroy,

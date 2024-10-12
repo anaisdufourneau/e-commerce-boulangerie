@@ -38,10 +38,9 @@ id INT AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(100) NOT NULL,
 prix DECIMAL (10,2),
 image_url VARCHAR(255) NOT NULL DEFAULT "croissant.jpg",
-description TEXT NOT NULL,
-categorie_id INT NOT NULL,
-FOREIGN KEY (categorie_id) REFERENCES Categorie(id) ON DELETE CASCADE
+description TEXT NOT NULL
 );
+INSERT INTO produit (id, image_url, title, description, prix) VALUES (1,'macarons.jpg', 'Coffret 18 Macarons','Un assortiment raffiné de macarons, alliant croquant et fondant, pour un moment de pure gourmandise', 28.00), (2,'cupcakes.jpg', 'Assortiments de 4 Cupcakes', 'Quatre cupcakes aux saveurs variées, alliant douceur et gourmandise. Un plaisir sucré à savourer ou à partager !', 20.00);
 
 CREATE TABLE commande_produit (
   commande_id INT NOT NULL,
