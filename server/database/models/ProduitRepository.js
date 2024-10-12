@@ -7,44 +7,30 @@ class ProduitRepository extends AbstractRepository {
 
   async create(produit) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (id, title, prix, image_url, description, categorie_id) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (id, title, prix, image_url, description) values (?, ?, ?, ?, ?)`,
       [
         produit.id,
         produit.title,
         produit.prix,
         produit.image_url,
         produit.description,
-        produit.categorie_id,
       ]
     );
     return result.insertId;
   }
 
   async read(id) {
-    const query = `
-      SELECT 
-        produit.*,
-        categorie.name AS categorie_name FROM ${this.table} 
-        INNER JOIN categorie ON produit categorie_id = categorie.id
-        LEFT JOIN commande ON produit.id = commande.produit_id
-        WHERE produit.id = ?
-    `;
-
+    const query = `select * from ${this.table} where id = ?`;
     const [rows] = await this.database.query(query, [id]);
-
     if (rows.length === 0) {
       return null;
     }
-
     const produit = {
       id: rows[0].id,
       image_url: rows[0].image_url,
       title: rows[0].title,
       description: rows[0].description,
-      categorie: rows[0].categorie_name,
-      commande: [],
     };
-
     return produit;
   }
 
@@ -63,8 +49,14 @@ class ProduitRepository extends AbstractRepository {
 
   async update(produit) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} set name = ?, prix = ?, image_url = ?, description = ?, categorie_id = ?, WHERE id = ?`,
-      [produit.name, produit.prix, produit.categorie_id, produit.id]
+      `UPDATE ${this.table} set title = ?, prix = ?, image_url = ?, description = ?, WHERE id = ?`,
+      [
+        produit.title,
+        produit.prix,
+        produit.image_url,
+        produit.description,
+        produit.id,
+      ]
     );
     return result.affectedRows;
   }
@@ -75,6 +67,14 @@ class ProduitRepository extends AbstractRepository {
       [id]
     );
     return result.affectedRows;
+  }
+
+  async search(term) {
+    const [rows] = await this.database.query(
+      `SELECT id, title, image_url FROM ${this.table} WHERE title LIKE ?`,
+      [`%${term}%`]
+    );
+    return rows;
   }
 }
 

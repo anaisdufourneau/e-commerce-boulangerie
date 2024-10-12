@@ -1,4 +1,50 @@
 h1 {
-  background-color: blanchedalmond;
-  color: rgb(235, 178, 103);
+  background-color: rgb(218, 208, 193);
+  color: var(--primary-brown);
+  font-family: var(--title-font);
+}
+.card {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0.6rem 1rem 0.6rem;
+  gap: 1rem;
+  flex-direction: row;
+}
+
+.card > article {
+  display: flex;
+
+  align-items: center;
+  width: fit-content;
+  max-width: 25rem;
+  height: auto;
+  gap: 1rem;
+}
+
+.pastry {
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+}
+.imageHome {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.titre-desc {
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgba(159, 204, 245, 0.327); */
+}
+
+.titre-desc p {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .pastry {
+    max-width: 50%;
+  }
 }
