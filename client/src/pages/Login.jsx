@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import "../styles/Auth.css";
 
@@ -61,7 +61,6 @@ export default function Login() {
         {error && <p className="error">{error}</p>}
       </div>
       <button type="submit">Je me connecte</button>
-      <Link to="/connexion?forgot=true">J'ai oublié mon mot de passe...</Link>
     </form>
   );
 }

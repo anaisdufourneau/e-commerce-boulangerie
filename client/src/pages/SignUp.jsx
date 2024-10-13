@@ -6,9 +6,7 @@ import "../styles/Auth.css";
 export default function SignUp() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    civility: "0",
     username: "",
-    fullname: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -42,19 +40,6 @@ export default function SignUp() {
       <h1>Inscription</h1>
       <div>
         <section>
-          <label htmlFor="civility">Civilité</label>
-          <select
-            name="civility"
-            id="civility"
-            value={formData.civility}
-            onChange={handleChange}
-          >
-            <option value="0">Monsieur</option>
-            <option value="1">Madame</option>
-            <option value="2">Autre</option>
-          </select>
-        </section>
-        <section>
           <label htmlFor="username">Nom d'utilisateur</label>
           <input
             type="text"
@@ -65,17 +50,7 @@ export default function SignUp() {
             onChange={handleChange}
           />
         </section>
-        <section>
-          <label htmlFor="pseudo">Nom et prénom</label>
-          <input
-            type="text"
-            name="fullname"
-            id="fullname"
-            placeholder="Votre nom et prénom..."
-            value={formData.fullname}
-            onChange={handleChange}
-          />
-        </section>
+
         <section>
           <label htmlFor="email">Email</label>
           <input

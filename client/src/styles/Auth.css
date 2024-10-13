@@ -7,23 +7,25 @@ form.auth {
   align-items: center;
   gap: 2rem;
   border-radius: 0.5rem;
-  background: var(--rose, #fff);
+  background: var(--rose, #b6b2b28a);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 form.auth select {
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
-  background: var(--thirty-white, #f5f5f5);
+  background: var(--primary-white);
   width: 100%;
 }
 
 form.auth > h1 {
   margin: 0;
   font-size: 2rem;
-  color: var(--primary-green);
+  color: var(--primary-brown);
   font-weight: 400;
-  text-decoration-line: underline;
+  background-color: var(--primary-beige);
+  border-radius: 24px;
+  width: 80%;
 }
 
 form.auth > div {
@@ -42,50 +44,54 @@ form.auth > div > section {
 form.auth label {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  color: var(--primary-green);
+  color: var(--primary-brown);
 }
 
 form.auth input {
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
-  background: var(--thirty-white, #f5f5f5);
+  background: var(--primary-white);
 }
 
 form.auth input::placeholder {
   color: rgba(0, 0, 0, 0.5);
-  font-family: Poppins;
+  font-family: var(--lorem-font);
   font-size: 1rem;
   font-weight: 400;
 }
 
 form.auth > button {
-  display: flex;
-  padding: 0.5rem 2rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  border-radius: 0.5rem;
-  background: var(--rose, #fff);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  color: var(--primary-font, #000);
-  font-family: Poppins;
-  font-size: 1.25rem;
-  font-weight: 400;
+  background: linear-gradient(
+    90deg,
+    var(--secondary-brown),
+    var(--primary-brown)
+  );
+  font-family: var(--lorem-font);
+  letter-spacing: 0.2px;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Légère ombre */
 }
-
 form.auth > button:hover {
-  background-color: var(--primary-green);
-  color: #fff;
+  background: linear-gradient(
+    90deg,
+    var(--primary-brown),
+    var(--secondary-brown)
+  ); /* Inversement du gradient au hover */
+  transform: scale(1.05); /* Légère augmentation de la taille au hover */
 }
-
 form.auth > button:active {
-  transform: scale(1.03);
+  transform: scale(0.98); /* Réduction légère quand on clique */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au clic */
 }
 
 form.auth > a {
-  font-family: Poppins;
-  text-decoration-line: underline;
+  font-family: var(--lorem-font);
 }
 
 @media (max-width: 768px) {
