@@ -15,7 +15,7 @@ const checkAuth = async (req, res, next) => {
         const user = await tables.user.read(decode.id);
         res
           .status(200)
-          .json({ id: user.id, fullname: user.fullname, role: user.role });
+          .json({ id: user.id, username: user.username, role: user.role });
       }
     }
   } catch (err) {
@@ -38,7 +38,6 @@ const login = async (req, res, next) => {
       message: "Connexion réussie",
       id: req.user.id,
       email: req.user.email,
-      fullname: req.user.fullname,
       role: req.user.role,
     });
   } catch (err) {
@@ -48,21 +47,12 @@ const login = async (req, res, next) => {
 
 const register = async (req, res, next) => {
   try {
-    const {
-      username,
-      fullname,
-      hashedPassword,
-      email,
-      civility,
-      role = 0,
-    } = req.body;
+    const { username, hashedPassword, email, role = 0 } = req.body;
     console.info(hashedPassword);
     await tables.user.create({
       username,
-      fullname,
       password: hashedPassword,
       email,
-      civility,
       role,
     });
 

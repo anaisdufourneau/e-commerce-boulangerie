@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Menu from "../../assets/images/burger.png";
 import Close from "../../assets/images/close1.png";
+import Button from "../Button";
 
 export default function MenuNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,11 +21,11 @@ export default function MenuNavbar() {
           <button type="button" onClick={handleMenu}>
             <img src={Close} alt="Close" />
           </button>
-          <Link to="/">Accueil</Link>
-          <Link to="/patisserie">Pâtisseries</Link>
           <Link to="/commande">Ma commande</Link>
+          <Link to="/patisserie">Nos Pâtisseries</Link>
+          <Link to="/register">Inscription</Link>
           <Link to="/login">
-            <button type="button">Connexion</button>
+            <Button text="Connexion" />
           </Link>
         </section>
       ) : null}
